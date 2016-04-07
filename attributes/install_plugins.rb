@@ -6,8 +6,10 @@
 #
 
 default[:jenkins_liatrio][:install_plugins][:plugins_list]  = ['git','github','naginator','sonar']
+default[:jenkins_liatrio][:install_plugins][:enablearchiva]	= false
 default[:jenkins_liatrio][:install_plugins][:maven_mirror]	= "http://localhost:8081/repository/internal"
 default[:jenkins_liatrio][:install_plugins][:enablesonar]		= false
+default[:jenkins_liatrio][:install_plugins][:enablearchiva]		= false
 default[:jenkins_liatrio][:install_plugins][:sonarurl]		  = "http://localhost:9000"
 default[:jenkins_liatrio][:install_plugins][:sonarjdbcurl]	= "tcp://localhost:9092/sonar"
 default[:jenkins_liatrio][:install_plugins][:jenkinsdlurl]	= "http://pkg.jenkins-ci.org/redhat/jenkins-1.653-1.1.noarch.rpm"

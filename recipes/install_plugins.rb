@@ -68,3 +68,30 @@ template '/var/lib/jenkins/jenkins.plugins.hygieia.HygieiaPublisher.xml' do
   variables({})
    notifies :restart, 'service[jenkins]', :delayed
 end
+
+# link maven
+template '/var/lib/jenkins/hudson.tasks.Maven.xml' do
+  source   'var/lib/jenkins/hudson.tasks.Maven.xml.erb'
+  mode     '0755'
+  variables({})
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
+end
+
+directory "/var/lib/jenkins/.m2" do
+  action :create
+  recursive true
+  mode '0644'
+  owner node[:jenkins][:user]
+  group node[:jenkins][:group]
+end
+
+if node[:jenkins_liatrio][:install_plugins][:enablearchiva] == true 
+  template '/var/lib/jenkins/.m2/settings.xml' do
+    source   'var/lib/jenkins/.m2/settings.xml.erb'
+    mode '0644'
+    owner node[:jenkins][:user]
+    group node[:jenkins][:group]
+    variables({})
+  end
+end

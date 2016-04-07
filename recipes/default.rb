@@ -45,12 +45,3 @@ execute "get_jenkins_cli_jar" do
   cwd "/opt"
   not_if { ::File.exists?('/opt/jenkins-cli.jar') }
 end
-
-# link maven
-template '/var/lib/jenkins/hudson.tasks.Maven.xml' do
-  source   'var/lib/jenkins/hudson.tasks.Maven.xml.erb'
-  mode     '0755'
-  variables({})
-  owner node[:jenkins][:master][:user]
-  group node[:jenkins][:master][:group]
-end

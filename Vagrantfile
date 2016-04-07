@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
       },
       "jenkins_liatrio" => {
         "install_plugins" => {
-
+          "enablearchiva" => false,
           "maven_mirror" => "http://localhost:8081/repository/internal",
           "enablesonar" => false,
           "sonarurl" => "http://192.168.1.10:9000",
