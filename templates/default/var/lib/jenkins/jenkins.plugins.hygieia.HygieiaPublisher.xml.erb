@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jenkins.plugins.hygieia.HygieiaPublisher_-DescriptorImpl plugin="hygieia-publisher@1.0-SNAPSHOT">
-  <hygieiaAPIUrl><%= node[:jenkins_liatrio][:hygieiaurl] %></hygieiaAPIUrl>
+  <hygieiaAPIUrl><%= node[:jenkins_liatrio][:install_plugins][:hygieiaurl] %></hygieiaAPIUrl>
   <hygieiaToken></hygieiaToken>
   <hygieiaJenkinsName>PipelineJenkins</hygieiaJenkinsName>
   <useProxy>false</useProxy>

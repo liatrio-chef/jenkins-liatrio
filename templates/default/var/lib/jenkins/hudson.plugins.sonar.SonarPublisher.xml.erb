@@ -4,7 +4,7 @@
     <hudson.plugins.sonar.SonarInstallation>
       <name>Sonar</name>
       <disabled>false</disabled>
-      <serverUrl><%= node[:jenkins_liatrio][:sonarurl] %></serverUrl>
+      <serverUrl><%= node[:jenkins_liatrio][:install_plugins][:sonarurl] %></serverUrl>
       <mojoVersion></mojoVersion>
       <databaseUrl></databaseUrl>
       <databaseLogin></databaseLogin>

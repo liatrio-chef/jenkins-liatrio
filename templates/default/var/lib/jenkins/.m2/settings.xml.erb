@@ -3,7 +3,7 @@
         <mirror>
                 <id>archiva.default</id>
                 <name>Proxy Cache - Internal Repository</name>
-                <url><%= node[:jenkins_liatrio][:maven_mirror] %></url>
+                <url><%= node[:jenkins_liatrio][:install_plugins][:maven_mirror] %></url>
                 <mirrorOf>*</mirrorOf>
         </mirror>
   </mirrors>
