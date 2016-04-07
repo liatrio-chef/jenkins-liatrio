@@ -12,9 +12,9 @@ end
 
 cookbook_file '/var/lib/jenkins/sonar-runner-dist-2.4.zip' do
   source 'sonar-runner-dist-2.4.zip'
-  owner 'root'
-  group 'root'
-  mode '0666'
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
+  mode '0644'
   action :create
 end
 
@@ -25,27 +25,33 @@ end
 
 template '/var/lib/jenkins/hudson.plugins.sonar.SonarPublisher.xml' do
   source   'var/lib/jenkins/hudson.plugins.sonar.SonarPublisher.xml.erb'
-  mode     '0755'
+  mode     '0644'
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
   variables({})
 end
 
 template '/var/lib/jenkins/hudson.plugins.sonar.SonarRunnerInstallation.xml' do
   source   'var/lib/jenkins/hudson.plugins.sonar.SonarRunnerInstallation.xml.erb'
-  mode     '0755'
+  mode     '0644'
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
   variables({})
 end
 
 template '/var/lib/jenkins/sonar-runner-2.4/conf/sonar-runner.properties' do
   source   'var/lib/jenkins/sonar-runner-2.4/conf/sonar-runner.properties.erb'
-  mode     '0755'
+  mode     '0644'
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
   variables({})
 end
 
 cookbook_file '/var/lib/jenkins/hygieia-publisher.hpi' do
   source 'hygieia-publisher.hpi'
-  owner 'jenkins'
-  group 'jenkins'
-  mode '0666'
+  mode     '0644'
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
   action :create
 end
 
@@ -56,7 +62,9 @@ end
 
 template '/var/lib/jenkins/jenkins.plugins.hygieia.HygieiaPublisher.xml' do
   source   'var/lib/jenkins/jenkins.plugins.hygieia.HygieiaPublisher.xml.erb'
-  mode     '0755'
+  mode     '0644'
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
   variables({})
    notifies :restart, 'service[jenkins]', :delayed
 end

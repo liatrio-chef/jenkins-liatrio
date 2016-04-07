@@ -14,16 +14,16 @@ include_recipe 'jenkins::master'
 directory "/var/lib/jenkins/.m2" do
   action :create
   recursive true
-  owner node[:jenkins_liatrio][:user]
-  group node[:jenkins_liatrio][:group]
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
   mode '0755'
 end
 
 template '/etc/maven/settings.xml' do
   source   'etc/maven/settings.xml.erb'
   mode     '0755'
-  owner node[:jenkins_liatrio][:user]
-  group node[:jenkins_liatrio][:group]
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
 end
 
 ruby_block "before_wait_for_jenkins" do
@@ -51,6 +51,6 @@ template '/var/lib/jenkins/hudson.tasks.Maven.xml' do
   source   'var/lib/jenkins/hudson.tasks.Maven.xml.erb'
   mode     '0755'
   variables({})
-  owner node[:jenkins][:user]
-  group node[:jenkins][:group]
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
 end

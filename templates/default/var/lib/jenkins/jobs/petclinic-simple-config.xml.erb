@@ -51,7 +51,7 @@
     <groupId>org.springframework.samples</groupId>
     <artifactId>spring-petclinic</artifactId>
   </rootModule>
-  <goals>clean deploy</goals>
+  <goals><%= node[:jenkins_liatrio][:create_job][:maven_goals] %></goals>
   <defaultGoals>install</defaultGoals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
