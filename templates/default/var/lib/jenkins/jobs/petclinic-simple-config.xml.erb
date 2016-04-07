@@ -114,7 +114,7 @@
   </publishers>
   <buildWrappers/>
   <prebuilders>
-    <% if node[:jenkins_liatrio][:enablesonar] == true %>
+    <% if node[:jenkins_liatrio][:install_plugins][:enablesonar] == true %>
     <hudson.plugins.sonar.SonarRunnerBuilder plugin="sonar@2.3">
       <project></project>
       <properties></properties>

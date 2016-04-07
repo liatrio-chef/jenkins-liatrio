@@ -22,6 +22,7 @@ Vagrant.configure(2) do |config|
       },
       "jenkins_liatrio" => {
         "install_plugins" => {
+          "plugins_list" => %w{git github naginator sonar},
           "enablearchiva" => false,
           "maven_mirror" => "http://localhost:8081/repository/internal",
           "enablesonar" => false,
