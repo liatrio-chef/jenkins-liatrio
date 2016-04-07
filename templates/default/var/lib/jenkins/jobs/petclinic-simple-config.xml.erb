@@ -114,6 +114,7 @@
   </publishers>
   <buildWrappers/>
   <prebuilders>
+    <% if node[:jenkins_liatrio][:enablesonar] == true %>
     <hudson.plugins.sonar.SonarRunnerBuilder plugin="sonar@2.3">
       <project></project>
       <properties></properties>
@@ -122,6 +123,7 @@
       <jdk>(Inherit From Job)</jdk>
       <task></task>
     </hudson.plugins.sonar.SonarRunnerBuilder>
+    <% end %>
   </prebuilders>
   <postbuilders/>
   <runPostStepsIfResult>

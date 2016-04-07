@@ -50,8 +50,8 @@ cookbook_file '/var/lib/jenkins/hygieia-publisher.hpi' do
 end
 
 execute 'install-plugin-hygieia-publisher' do
-  command "java -jar /opt/jenkins-cli.jar -s http://#{node[:jenkins_liatrio][:ip]}:#{node[:jenkins_liatrio][:port]}/ install-plugin /var/lib/jenkins/hygieia-publisher.hpi"
-  not_if ("java -jar /opt/jenkins-cli.jar -s http://#{node[:jenkins_liatrio][:ip]}:#{node[:jenkins_liatrio][:port]}/ list-plugins| grep hygieia-publisher")
+  command "java -jar /opt/jenkins-cli.jar -s http://#{node[:jenkins][:master][:host]}:#{node[:jenkins][:master][:port]}/ install-plugin /var/lib/jenkins/hygieia-publisher.hpi"
+  not_if ("java -jar /opt/jenkins-cli.jar -s http://#{node[:jenkins][:master][:host]}:#{node[:jenkins][:master][:port]}/ list-plugins| grep hygieia-publisher")
 end
 
 template '/var/lib/jenkins/jenkins.plugins.hygieia.HygieiaPublisher.xml' do

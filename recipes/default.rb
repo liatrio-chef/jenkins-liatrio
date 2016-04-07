@@ -11,13 +11,6 @@ end
 
 include_recipe 'jenkins::master'
 
-template '/etc/sysconfig/jenkins' do
-  source    'etc/sysconfig/jenkins'
-  mode 	    '0600'
-  variables ({})
-  notifies :restart, 'service[jenkins]', :delayed
-end
-
 directory "/var/lib/jenkins/.m2" do
   action :create
   recursive true
@@ -36,8 +29,8 @@ end
 ruby_block "before_wait_for_jenkins" do
   block do
     while true do
-      #puts "curl http://#{node[:jenkins_liatrio][:ip]}:#{node[:jenkins_liatrio][:port]}/jnlpJars/jenkins-cli.jar"
-      ` curl http://#{node[:jenkins_liatrio][:ip]}:#{node[:jenkins_liatrio][:port]}/jnlpJars/jenkins-cli.jar -X HEAD -I -s | grep "200 OK" `
+      puts "curl http://#{node[:jenkins][:master][:host]}:#{node[:jenkins][:master][:port]}/jnlpJars/jenkins-cli.jar"
+      ` curl http://#{node[:jenkins][:master][:host]}:#{node[:jenkins][:master][:port]}/jnlpJars/jenkins-cli.jar -X HEAD -I -s | grep "200 OK" `
       exitstatus = $?.exitstatus
       ( puts "+++ +++ before_wait_for_jenkins should exit!" && break ) if 0 == exitstatus
       puts "+++ +++ Sleeping in before_wait_for_jenkins..."
@@ -48,7 +41,7 @@ ruby_block "before_wait_for_jenkins" do
 end
 
 execute "get_jenkins_cli_jar" do
-  command "wget http://#{node[:jenkins_liatrio][:ip]}:#{node[:jenkins_liatrio][:port]}/jnlpJars/jenkins-cli.jar"
+  command "wget http://#{node[:jenkins][:master][:host]}:#{node[:jenkins][:master][:port]}/jnlpJars/jenkins-cli.jar"
   cwd "/opt"
   not_if { ::File.exists?('/opt/jenkins-cli.jar') }
 end
