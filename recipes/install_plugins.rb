@@ -58,4 +58,5 @@ template '/var/lib/jenkins/jenkins.plugins.hygieia.HygieiaPublisher.xml' do
   source   'var/lib/jenkins/jenkins.plugins.hygieia.HygieiaPublisher.xml.erb'
   mode     '0755'
   variables({})
+   notifies :restart, 'service[jenkins]', :delayed
 end
