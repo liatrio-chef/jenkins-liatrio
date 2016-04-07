@@ -1,6 +1,6 @@
 jenkins-liatrio Cookbook
 ========================
-This is a wrapper cookbook that installs jenkins to be used with archiva-liatrio, sonarqube-liatrio, tomcat-liatrio, and hygieia-liatrio in a pipeline.
+A wrapper cookbook that installs jenkins to be used with archiva-liatrio, sonarqube-liatrio, tomcat-liatrio, and hygieia-liatrio in a pipeline.
 
 Requirements
 ------------
@@ -26,6 +26,23 @@ Just include `jenkins-liatrio` in your node's `run_list`:
   ]
 }
 ```
+
+Attributes
+----------
+default[:jenkins_liatrio][:packages]              = ['java-1.8.0-openjdk-devel','java-1.8.0-openjdk','maven','maven-war-plugin']
+default[:jenkins_liatrio][:user]                  = 'jenkins'
+default[:jenkins_liatrio][:group]                 = 'jenkins'
+default[:jenkins_liatrio][:sleep_interval_small]  = 3
+default[:jenkins_liatrio][:install_plugins][:plugins_list]      = ['git','github','naginator','sonar']
+default[:jenkins_liatrio][:install_plugins][:maven_mirror]	= "http://localhost:8081/repository/internal"
+default[:jenkins_liatrio][:install_plugins][:enablesonar]		= false
+default[:jenkins_liatrio][:install_plugins][:sonarurl]		  = "http://localhost:9000"
+default[:jenkins_liatrio][:install_plugins][:sonarjdbcurl]	= "tcp://localhost:9092/sonar"
+default[:jenkins_liatrio][:install_plugins][:jenkinsdlurl]	= "http://pkg.jenkins-ci.org/redhat/jenkins-1.653-1.1.noarch.rpm"
+default[:jenkins_liatrio][:install_plugins][:githuburl]     = "https://github.com/drewliatro/spring-petclinic/"
+default[:jenkins_liatrio][:install_plugins][:giturl]		    = "https://github.com/drew-liatrio/spring-petclinic.git"
+default[:jenkins_liatrio][:install_plugins][:hygieia_url]   = "http://192.168.100.10:8080/api/"
+default[:jenkins_liatrio][:nexus_repo] = 'nexus.local'
 
 Contributing
 ------------
