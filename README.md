@@ -1,12 +1,12 @@
 jenkins-liatrio Cookbook
 ========================
-This is a simple example wrapper cookbook that installs jenkins.
+This is a wrapper cookbook that installs jenkins to be used with archiva-liatrio, sonarqube-liatrio, tomcat-liatrio, and hygieia-liatrio in a pipeline.
 
 Requirements
 ------------
 Berkshelf
 
-Vagrant
+Vagrant 1.9.1
 
 Usage
 -----
