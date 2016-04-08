@@ -66,7 +66,6 @@ template '/var/lib/jenkins/jenkins.plugins.hygieia.HygieiaPublisher.xml' do
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
   variables({})
-   notifies :restart, 'service[jenkins]', :delayed
 end
 
 # link maven
@@ -76,6 +75,7 @@ template '/var/lib/jenkins/hudson.tasks.Maven.xml' do
   variables({})
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
+  notifies :restart, 'service[jenkins]', :delayed
 end
 
 if node[:jenkins_liatrio][:install_plugins][:enablearchiva] == true 
@@ -85,5 +85,6 @@ if node[:jenkins_liatrio][:install_plugins][:enablearchiva] == true
     owner node[:jenkins][:user]
     group node[:jenkins][:group]
     variables({})
+    notifies :restart, 'service[jenkins]', :delayed
   end
 end
