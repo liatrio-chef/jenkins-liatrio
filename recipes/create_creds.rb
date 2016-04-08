@@ -6,9 +6,9 @@
 #
 # Copyright 2016, Liatrio
 
-jenkins_private_key_credentials 'admin' do
+jenkins_private_key_credentials 'tomcat_petclinic' do
   id 'fa3aab48-4edc-446d-b1e2-1d89d86f4458'
-  description 'admin key'
+  description 'tomcat_petclinic user private key'
   private_key "-----BEGIN RSA PRIVATE KEY-----
 MIIEowIBAAKCAQEAs9hFeFi7aRYMQj/47D+cnVOjRbQ2RbibqTQ53NK+kV4FELrt
 JFS22aLrPxndH8QUdOQ4sqsFNIscegDmH59P6HeY2Dm+vun94/TuEcEnP4FAXeZj
