@@ -16,7 +16,7 @@ template '/var/lib/jenkins/jobs/petclinic-simple-config.xml' do
   })
 end
 
-jenkins_job 'petclinic-simple' do
+jenkins_job 'petclinic-simple-auto-1' do
   config '/var/lib/jenkins/jobs/petclinic-simple-config.xml'
 end
 
