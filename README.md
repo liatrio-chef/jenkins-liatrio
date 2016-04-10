@@ -23,26 +23,32 @@ Just include `jenkins-liatrio` in your node's `run_list`:
   "name":"my_node",
   "run_list": [
     "recipe[jenkins-liatrio]"
+    "recipe[jenkins-liatrio::install_plugins]"
+    "recipe[jenkins-liatrio::create_job]"
+    "recipe[jenkins-liatrio::create_creds]"
   ]
 }
 ```
 
 Attributes
 ----------
-default[:jenkins_liatrio][:packages]              = ['java-1.8.0-openjdk-devel','java-1.8.0-openjdk','maven','maven-war-plugin']
-default[:jenkins_liatrio][:user]                  = 'jenkins'
-default[:jenkins_liatrio][:group]                 = 'jenkins'
+```
+default[:jenkins_liatrio][:create_job][:maven_goals] = 'clean install'
+default[:jenkins_liatrio][:nexus_repo] = 'nexus.local'
+default[:jenkins_liatrio][:packages]              = %w{java-1.8.0-openjdk-devel java-1.8.0-openjdk maven maven-war-plugin}
 default[:jenkins_liatrio][:sleep_interval_small]  = 3
-default[:jenkins_liatrio][:install_plugins][:plugins_list]      = ['git','github','naginator','sonar']
+default[:jenkins_liatrio][:install_plugins][:plugins_list]  = %w{git github naginator sonar}
+default[:jenkins_liatrio][:install_plugins][:enablearchiva]	= false
 default[:jenkins_liatrio][:install_plugins][:maven_mirror]	= "http://localhost:8081/repository/internal"
 default[:jenkins_liatrio][:install_plugins][:enablesonar]		= false
+default[:jenkins_liatrio][:install_plugins][:enablearchiva]		= false
 default[:jenkins_liatrio][:install_plugins][:sonarurl]		  = "http://localhost:9000"
 default[:jenkins_liatrio][:install_plugins][:sonarjdbcurl]	= "tcp://localhost:9092/sonar"
 default[:jenkins_liatrio][:install_plugins][:jenkinsdlurl]	= "http://pkg.jenkins-ci.org/redhat/jenkins-1.653-1.1.noarch.rpm"
 default[:jenkins_liatrio][:install_plugins][:githuburl]     = "https://github.com/drewliatro/spring-petclinic/"
 default[:jenkins_liatrio][:install_plugins][:giturl]		    = "https://github.com/drew-liatrio/spring-petclinic.git"
 default[:jenkins_liatrio][:install_plugins][:hygieia_url]   = "http://192.168.100.10:8080/api/"
-default[:jenkins_liatrio][:nexus_repo] = 'nexus.local'
+```
 
 Contributing
 ------------

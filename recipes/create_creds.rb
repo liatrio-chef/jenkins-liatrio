@@ -4,7 +4,6 @@
 #
 # Author: Drew Holt <drew@liatrio.com>
 #
-# Copyright 2016, Liatrio
 
 jenkins_private_key_credentials 'tomcat_petclinic' do
   id 'fa3aab48-4edc-446d-b1e2-1d89d86f4458'
