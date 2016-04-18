@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.chikli.hudson.plugin.naginator.NaginatorOptOutProperty plugin="naginator@1.17">
+      <optOut>false</optOut>
+    </com.chikli.hudson.plugin.naginator.NaginatorOptOutProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec></spec>
+      <upstreamProjects>deploy-tomcat, </upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/usr/bin/ruby
+# filename: firefox_test.rb
+
+require &apos;selenium-webdriver&apos;
+require &apos;rspec/expectations&apos;
+include RSpec::Matchers
+
+def setup
+  @driver = Selenium::WebDriver.for(
+    :remote,
+    url: &apos;http://localhost:4444/wd/hub&apos;,
+    desired_capabilities: :firefox) # or chrome or whatever
+end
+
+def teardown
+  @driver.quit
+end
+
+def run
+  setup
+  yield
+  teardown
+end
+
+run do
+  @driver.get(&quot;http://192.168.100.10:8082/spring-petclinic/&quot;)
+  expect(@driver.title).to eql &apos;PetClinic :: a Spring Framework demonstration&apos;
+
+  @driver.find_element(:link, &quot;Find owners&quot;).click
+  expect(@driver.find_element(:link, &quot;Find owners&quot;).text).to eql &quot;Find owners&quot;
+
+  @driver.find_element(:tag_name, &quot;input&quot;).send_keys &quot;Estaban&quot;
+  expect(@driver.find_element(:tag_name, &quot;input&quot;)[&apos;value&apos;]).to eql &quot;Estaban&quot;
+
+  @driver.find_element(:css, &quot;button[type=\&quot;submit\&quot;]&quot;).click
+  #expect(@driver.find_element(:css, &quot;button[type=\&quot;submit\&quot;]&quot;)[&apos;value&apos;]).to eql &quot;submit&quot;
+
+  @driver.find_element(:link, &quot;Add Visit&quot;).click
+  #expect(@driver.find_element(:link, &quot;Add Visit&quot;).text).to eql &quot;Add Visit&quot;
+
+  @driver.find_element(:id, &quot;description&quot;).clear
+  expect(@driver.find_element(:id, &quot;description&quot;)[&apos;value&apos;]).to eql &quot;&quot;
+
+  @driver.find_element(:id, &quot;description&quot;).send_keys &quot;check up added test&quot;
+  expect(@driver.find_element(:id, &quot;description&quot;)[&apos;value&apos;]).to eql &quot;check up added test&quot;
+
+  @driver.find_element(:css, &quot;button[type=\&quot;submit\&quot;]&quot;).click
+  #expect(@driver.find_element(:css, &quot;button[type=\&quot;submit\&quot;]&quot;)[&apos;value&apos;]).to eql &quot;submit&quot;
+
+  #expect check up added test on page
+  expect(@driver.find_element(:xpath, &quot;/html/body/div/table[2]/tbody/tr/td[2]/table/tbody/tr[1]/td[2]&quot;).text).to eql &quot;check up added test&quot;
+
+  @driver.save_screenshot(&apos;checkup_firefox.png&apos;)
+
+end</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
