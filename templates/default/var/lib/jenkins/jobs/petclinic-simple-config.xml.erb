@@ -12,7 +12,7 @@
         <artifactNumToKeep>-1</artifactNumToKeep>
       </strategy>
     </jenkins.model.BuildDiscarderProperty>
-    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.18.1">
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.18.2">
       <projectUrl>https://github.com/drewliatro/spring-petclinic/</projectUrl>
       <displayName></displayName>
     </com.coravy.hudson.plugins.github.GithubProjectProperty>
@@ -20,7 +20,7 @@
       <optOut>false</optOut>
     </com.chikli.hudson.plugin.naginator.NaginatorOptOutProperty>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.2">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.0">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -51,7 +51,7 @@
     <groupId>org.springframework.samples</groupId>
     <artifactId>spring-petclinic</artifactId>
   </rootModule>
-  <goals><%= node[:jenkins_liatrio][:create_job][:maven_goals] %></goals>
+  <goals>clean deploy</goals>
   <defaultGoals>install</defaultGoals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
@@ -75,29 +75,29 @@
       </hygieiaBuild>
       <hygieiaTest>
         <publishTestStart>true</publishTestStart>
-        <testFileNamePattern>*.jar</testFileNamePattern>
-        <testResultsDirectory>target/</testResultsDirectory>
+        <testFileNamePattern>*.war</testFileNamePattern>
+        <testResultsDirectory>/target/</testResultsDirectory>
         <testType>Unit</testType>
-        <testApplicationName>petclinic-simple</testApplicationName>
+        <testApplicationName>spring-petclinic</testApplicationName>
         <testEnvironmentName>dev</testEnvironmentName>
       </hygieiaTest>
       <hygieiaArtifact>
-        <artifactName>*.jar</artifactName>
-        <artifactDirectory>target/</artifactDirectory>
-        <artifactGroup>com.liatrio.petclinic-simple1</artifactGroup>
-        <artifactVersion>0.0.1</artifactVersion>
+        <artifactName>*.war</artifactName>
+        <artifactDirectory>/target/</artifactDirectory>
+        <artifactGroup>org.springframework.samples</artifactGroup>
+        <artifactVersion>4.2.4-SNAPSHOT</artifactVersion>
       </hygieiaArtifact>
       <hygieiaSonar>
         <publishBuildStart>true</publishBuildStart>
       </hygieiaSonar>
       <hygieiaDeploy>
-        <artifactName>*.jar</artifactName>
-        <artifactDirectory>target/</artifactDirectory>
-        <artifactGroup>com.liatrio.petclinic-simple1</artifactGroup>
-        <artifactVersion>0.0.1</artifactVersion>
-        <applicationName>petclinic-simple</applicationName>
+        <artifactName>*.war</artifactName>
+        <artifactDirectory>/target/</artifactDirectory>
+        <artifactGroup>org.springframework.samples</artifactGroup>
+        <artifactVersion>4.2.4-SNAPSHOT</artifactVersion>
+        <applicationName>spring-petclinic</applicationName>
         <environmentName>dev</environmentName>
-        <publishDeployStart>false</publishDeployStart>
+        <publishDeployStart>true</publishDeployStart>
       </hygieiaDeploy>
     </jenkins.plugins.hygieia.HygieiaPublisher>
     <com.chikli.hudson.plugin.naginator.NaginatorPublisher plugin="naginator@1.17">
@@ -115,7 +115,7 @@
   <buildWrappers/>
   <prebuilders>
     <% if node[:jenkins_liatrio][:install_plugins][:enablesonar] == true %>
-    <hudson.plugins.sonar.SonarRunnerBuilder plugin="sonar@2.3">
+    <hudson.plugins.sonar.SonarRunnerBuilder plugin="sonar@2.4">
       <project></project>
       <properties></properties>
       <javaOpts></javaOpts>
