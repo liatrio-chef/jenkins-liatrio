@@ -34,6 +34,7 @@ jenkins_job 'deploy-tomcat' do
   config '/var/lib/jenkins/jobs/deploy-tomcat-config.xml'
 end
 
+# selenium-chrome-petclinic-test
 template '/var/lib/jenkins/jobs/selenium-chrome-petclinic-test-config.xml' do
   source 'var/lib/jenkins/jobs/selenium-chrome-petclinic-test-config.xml.erb'
   mode     '0644'
@@ -47,6 +48,7 @@ jenkins_job 'selenium-chrome-petclinic-test' do
   config '/var/lib/jenkins/jobs/selenium-chrome-petclinic-test-config.xml'
 end
 
+# selenium-firefox-petclinic-test
 template '/var/lib/jenkins/jobs/selenium-firefox-petclinic-test-config.xml' do
   source 'var/lib/jenkins/jobs/selenium-firefox-petclinic-test-config.xml.erb'
   mode     '0644'
@@ -56,6 +58,6 @@ template '/var/lib/jenkins/jobs/selenium-firefox-petclinic-test-config.xml' do
   })
 end
 
-jenkins_job 'selenium-chrome-petclinic-test' do
+jenkins_job 'selenium-firefox-petclinic-test' do
   config '/var/lib/jenkins/jobs/selenium-firefox-petclinic-test-config.xml'
 end
