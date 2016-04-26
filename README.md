@@ -1,6 +1,6 @@
 jenkins-liatrio Cookbook
 ========================
-A wrapper cookbook that installs jenkins to be used with archiva-liatrio, sonarqube-liatrio, tomcat-liatrio, and hygieia-liatrio in a pipeline.
+A wrapper cookbook that installs jenkins to be used with archiva-liatrio, sonarqube-liatrio, tomcat-liatrio, selenium-liatrio, and hygieia-liatrio in a pipeline.
 
 Requirements
 ------------
