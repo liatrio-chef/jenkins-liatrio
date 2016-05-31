@@ -7,7 +7,6 @@
 
 default[:jenkins_liatrio][:install_plugins][:plugins_list]  = %w{git github naginator sonar}
 default[:jenkins_liatrio][:install_plugins][:enablearchiva]	= false
-default[:jenkins_liatrio][:install_plugins][:maven_mirror]	= "http://localhost:8081/repository/internal"
 default[:jenkins_liatrio][:install_plugins][:enablesonar]		= false
 default[:jenkins_liatrio][:install_plugins][:enablearchiva]		= false
 default[:jenkins_liatrio][:install_plugins][:sonarurl]		  = "http://localhost:9000"
