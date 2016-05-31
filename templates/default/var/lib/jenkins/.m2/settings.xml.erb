@@ -1,24 +1,10 @@
 <settings>
-  <mirrors>
-        <mirror>
-                <id>archiva.default</id>
-                <name>Proxy Cache - Internal Repository</name>
-                <url><%= node[:jenkins_liatrio][:install_plugins][:maven_mirror] %></url>
-                <mirrorOf>*</mirrorOf>
-        </mirror>
-  </mirrors>
 
   <servers>
     <server>
       <id>deployment</id>
-      <username>deploy</username>
-      <password>deploy1</password>
+      <username>deployment</username>
+      <password>deployment123</password>
     </server>
-    <server>
-      <id>snapshots</id>
-      <username>snapshots</username>
-      <password>snapshots1</password>
-    </server>
-  </servers>
 
 </settings>
