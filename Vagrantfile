@@ -7,10 +7,10 @@ Vagrant.configure(2) do |config|
   config.berkshelf.enabled = true
   config.vm.provision 'chef_solo' do |chef|
     chef.add_recipe 'jenkins-liatrio::default'
-    chef.add_recipe "jenkins-liatrio::install_plugins"
-    chef.add_recipe "jenkins-liatrio::create_job"
-    chef.add_recipe "jenkins-liatrio::create_creds"
-    chef.add_recipe "minitest-handler"
+    chef.add_recipe 'jenkins-liatrio::install_plugins'
+    chef.add_recipe 'jenkins-liatrio::create_job'
+    chef.add_recipe 'jenkins-liatrio::create_creds'
+    chef.add_recipe 'minitest-handler'
     chef.json = {
       'jenkins' => {
         'master' => {
