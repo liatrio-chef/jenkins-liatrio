@@ -8,12 +8,10 @@
 # Create petclinic-simple job
 template '/var/lib/jenkins/jobs/petclinic-simple-config.xml' do
   source 'var/lib/jenkins/jobs/petclinic-simple-config.xml.erb'
-  mode     '0644'
+  mode '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
-  variables({
-    :nexus_repo => node[:jenkins_liatrio][:nexus_repo]
-  })
+  variables(nexus_repo: node[:jenkins_liatrio][:nexus_repo])
 end
 
 jenkins_job 'petclinic-simple-auto-1' do
@@ -23,11 +21,11 @@ end
 # Create deploy-tomcat job
 template '/var/lib/jenkins/jobs/deploy-tomcat-config.xml' do
   source 'var/lib/jenkins/jobs/deploy-tomcat-config.xml.erb'
-  mode     '0644'
+  mode '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
   variables({
-  })
+            })
 end
 
 jenkins_job 'deploy-tomcat' do
@@ -37,11 +35,11 @@ end
 # selenium-chrome-petclinic-test
 template '/var/lib/jenkins/jobs/selenium-chrome-petclinic-test-config.xml' do
   source 'var/lib/jenkins/jobs/selenium-chrome-petclinic-test-config.xml.erb'
-  mode     '0644'
+  mode '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
   variables({
-  })
+            })
 end
 
 jenkins_job 'selenium-chrome-petclinic-test' do
@@ -51,11 +49,11 @@ end
 # selenium-firefox-petclinic-test
 template '/var/lib/jenkins/jobs/selenium-firefox-petclinic-test-config.xml' do
   source 'var/lib/jenkins/jobs/selenium-firefox-petclinic-test-config.xml.erb'
-  mode     '0644'
+  mode '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
   variables({
-  })
+            })
 end
 
 jenkins_job 'selenium-firefox-petclinic-test' do

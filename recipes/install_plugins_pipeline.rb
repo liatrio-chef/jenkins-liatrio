@@ -15,7 +15,7 @@ end
 
 execute 'unzip_sonar-runner' do
   command 'cd /var/lib/jenkins; unzip sonar-runner-dist-2.4.zip'
-  not_if do ::File.exists?('/var/lib/jenkins/sonar-runner-2.4') end
+  not_if { ::File.exist?('/var/lib/jenkins/sonar-runner-2.4') }
 end
 
 template '/var/lib/jenkins/hudson.plugins.sonar.SonarPublisher.xml' do
@@ -44,7 +44,7 @@ end
 
 if node[:jenkins_liatrio][:install_plugins][:enablearchiva] == true
   template '/var/lib/jenkins/.m2/settings.xml' do
-    source   'var/lib/jenkins/.m2/settings.xml.erb'
+    source 'var/lib/jenkins/.m2/settings.xml.erb'
     mode '0644'
     owner node[:jenkins][:user]
     group node[:jenkins][:group]
