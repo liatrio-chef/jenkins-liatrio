@@ -5,6 +5,11 @@
 # Author: Drew Holt <drew@liatrio.com>
 #
 
+
+# Included English based of information found in this issue at github 
+# https://github.com/bbatsov/rubocop/issues/1747
+require 'English'
+
 node[:jenkins_liatrio][:packages].each do |pkg|
   package pkg
 end
