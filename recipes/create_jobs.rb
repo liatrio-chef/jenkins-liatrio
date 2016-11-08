@@ -7,7 +7,7 @@
 
 # Create petclinic-simple job
 template '/var/lib/jenkins/jobs/petclinic-simple-config.xml' do
-  source 'var/lib/jenkins/jobs/petclinic-simple-config.xml.erb'
+  source 'jobs/petclinic-simple-config.xml.erb'
   mode '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
@@ -20,7 +20,7 @@ end
 
 # Create deploy-tomcat job
 template '/var/lib/jenkins/jobs/deploy-tomcat-config.xml' do
-  source 'var/lib/jenkins/jobs/deploy-tomcat-config.xml.erb'
+  source 'jobs/deploy-tomcat-config.xml.erb'
   mode '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
@@ -34,7 +34,7 @@ end
 
 # selenium-chrome-petclinic-test
 template '/var/lib/jenkins/jobs/selenium-chrome-petclinic-test-config.xml' do
-  source 'var/lib/jenkins/jobs/selenium-chrome-petclinic-test-config.xml.erb'
+  source 'jobs/selenium-chrome-petclinic-test-config.xml.erb'
   mode '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
@@ -48,7 +48,7 @@ end
 
 # selenium-firefox-petclinic-test
 template '/var/lib/jenkins/jobs/selenium-firefox-petclinic-test-config.xml' do
-  source 'var/lib/jenkins/jobs/selenium-firefox-petclinic-test-config.xml.erb'
+  source 'jobs/selenium-firefox-petclinic-test-config.xml.erb'
   mode '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]

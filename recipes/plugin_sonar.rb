@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: jenkins-liatrio
-# Recipe:: install_plugins_pipeline
+# Recipe:: plugin_sonar
 #
 # Author: Drew Holt <drew@liatrio.com>
 #
@@ -19,7 +19,7 @@ execute 'unzip_sonar-runner' do
 end
 
 template '/var/lib/jenkins/hudson.plugins.sonar.SonarPublisher.xml' do
-  source   'var/lib/jenkins/hudson.plugins.sonar.SonarPublisher.xml.erb'
+  source   'hudson.plugins.sonar.SonarPublisher.xml.erb'
   mode     '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
@@ -27,7 +27,7 @@ template '/var/lib/jenkins/hudson.plugins.sonar.SonarPublisher.xml' do
 end
 
 template '/var/lib/jenkins/hudson.plugins.sonar.SonarRunnerInstallation.xml' do
-  source   'var/lib/jenkins/hudson.plugins.sonar.SonarRunnerInstallation.xml.erb'
+  source   'hudson.plugins.sonar.SonarRunnerInstallation.xml.erb'
   mode     '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
@@ -35,20 +35,9 @@ template '/var/lib/jenkins/hudson.plugins.sonar.SonarRunnerInstallation.xml' do
 end
 
 template '/var/lib/jenkins/sonar-runner-2.4/conf/sonar-runner.properties' do
-  source   'var/lib/jenkins/sonar-runner-2.4/conf/sonar-runner.properties.erb'
+  source   'sonar-runner-2.4/conf/sonar-runner.properties.erb'
   mode     '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
   variables({})
-end
-
-if node[:jenkins_liatrio][:install_plugins][:enablearchiva] == true
-  template '/var/lib/jenkins/.m2/settings.xml' do
-    source 'var/lib/jenkins/.m2/settings.xml.erb'
-    mode '0644'
-    owner node[:jenkins][:user]
-    group node[:jenkins][:group]
-    variables({})
-    notifies :restart, 'service[jenkins]', :delayed
-  end
 end
