@@ -6,22 +6,35 @@ Vagrant.configure(2) do |config|
 
   config.berkshelf.enabled = true
   config.vm.provision "chef_solo" do |chef|
+
+    # path to data bag secret file
+    chef.encrypted_data_bag_secret_key_path = "./encrypted_data_bag_secret_vagrant"
+
+    # path to data_bags directory relative to cwd
+    chef.data_bags_path = "data_bags/"
+
     chef.add_recipe "jenkins-liatrio::default"
     chef.add_recipe "jenkins-liatrio::install_plugins"
+    chef.add_recipe "jenkins-liatrio::plugin_maven"
+    chef.add_recipe "jenkins-liatrio::plugin_sonar"
+    #chef.add_recipe "jenkins-liatrio::plugin_hygieia"
+    chef.add_recipe "jenkins-liatrio::m2_settings"
+    chef.add_recipe "jenkins-liatrio::security"
     chef.add_recipe "jenkins-liatrio::create_jobs"
-    chef.add_recipe "jenkins-liatrio::create_creds"
-    chef.add_recipe "minitest-handler"
+    chef.add_recipe "jenkins-liatrio::config_xml"
     chef.json = {
       'jenkins' => {
         'master' => {
+          'version' => '2.30-1.1',
+          'jvm_options' => '-Djenkins.install.runSetupWizard=false',
           'host' => 'localhost',
           'port' => 8080,
-          # "repostiroy" => "http://pkg.jenkins-ci.org/redhat"
+          #"repostiroy" => "http://mirrors.jenkins-ci.org/redhat/"
         }
       },
       'jenkins_liatrio' => {
         'install_plugins' => {
-          'plugins_list' => %w(git github naginator sonar),
+          #'plugins_list' => %w(git github naginator sonar),
           'enablearchiva' => false,
           'maven_mirror' => 'http://localhost:8081/repository/internal',
           'enablesonar' => false,

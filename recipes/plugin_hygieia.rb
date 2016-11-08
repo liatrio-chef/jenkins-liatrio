@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: jenkins-liatrio
-# Recipe:: install_plugins_hygieia
+# Recipe:: plugin_hygieia
 #
 # Author: Drew Holt <drew@liatrio.com>
 #
@@ -19,7 +19,7 @@ execute 'install-plugin-hygieia-publisher' do
 end
 
 template '/var/lib/jenkins/jenkins.plugins.hygieia.HygieiaPublisher.xml' do
-  source   'var/lib/jenkins/jenkins.plugins.hygieia.HygieiaPublisher.xml.erb'
+  source   'jenkins.plugins.hygieia.HygieiaPublisher.xml.erb'
   mode     '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
