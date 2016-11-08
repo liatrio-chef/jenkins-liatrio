@@ -1,0 +1,12 @@
+<VirtualHost _default_:80>
+  DocumentRoot /var/www/html
+
+<Location />
+  Require all granted
+</Location>
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI}
+
+</VirtualHost>
