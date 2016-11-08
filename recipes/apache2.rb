@@ -17,15 +17,30 @@ node.default["apache2"]["listen"] = ["*:80", "*:443"]
   include_recipe recipe.to_s
 end
 
-# copy ssl certificates from certificates folder to client’s /etc/httpd/ssl folder
-remote_directory "#{node['apache']['dir']}/ssl" do
-  source "certificates"
-  files_owner "root"
-  files_group "root"
-  files_mode 0o0644
-  owner "root"
+file "#{node['apache']['dir']}/ssl/#{site_fqdn}.ca-bundle" do
+  content jenk_databag["cabundle"]
+  user "root"
   group "root"
-  mode 0o755
+  mode 0o400
+  sensitive true
+  notifies :restart, "service[apache2]", :delayed
+end
+
+file "#{node['apache']['dir']}/ssl/#{site_fqdn}.crt" do
+  content jenk_databag["crt"]
+  user "root"
+  group "root"
+  mode 0o400
+  sensitive true
+  notifies :restart, "service[apache2]", :delayed
+end
+
+file "#{node['apache']['dir']}/ssl/#{site_fqdn}.csr" do
+  content jenk_databag["csr"]
+  user "root"
+  group "root"
+  mode 0o400
+  sensitive true
   notifies :restart, "service[apache2]", :delayed
 end
 
