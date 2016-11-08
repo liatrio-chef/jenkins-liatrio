@@ -18,7 +18,7 @@ node.default["apache2"]["listen"] = ["*:80", "*:443"]
 end
 
 file "#{node['apache']['dir']}/ssl/#{site_fqdn}.ca-bundle" do
-  content jenk_databag["cabundle"]
+  content jenk_databag["#{site_fqdn}.cabundle"]
   user "root"
   group "root"
   mode 0o400
@@ -27,7 +27,7 @@ file "#{node['apache']['dir']}/ssl/#{site_fqdn}.ca-bundle" do
 end
 
 file "#{node['apache']['dir']}/ssl/#{site_fqdn}.crt" do
-  content jenk_databag["crt"]
+  content jenk_databag["#{site_fqdn}.crt"]
   user "root"
   group "root"
   mode 0o400
@@ -36,7 +36,7 @@ file "#{node['apache']['dir']}/ssl/#{site_fqdn}.crt" do
 end
 
 file "#{node['apache']['dir']}/ssl/#{site_fqdn}.csr" do
-  content jenk_databag["csr"]
+  content jenk_databag["#{site_fqdn}.csr"]
   user "root"
   group "root"
   mode 0o400
