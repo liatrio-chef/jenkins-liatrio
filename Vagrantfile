@@ -25,7 +25,7 @@ Vagrant.configure(2) do |config|
     chef.json = {
       'jenkins' => {
         'master' => {
-          'version' => '2.30-1.1',
+          'version' => '2.28-1.1',
           'jvm_options' => '-Djenkins.install.runSetupWizard=false',
           'host' => 'localhost',
           'port' => 8080,

@@ -18,8 +18,8 @@ end
 template '/var/lib/jenkins/.m2/settings.xml' do
   source '.m2/settings.xml.erb'
   mode '0600'
-  owner node[:jenkins][:user]
-  group node[:jenkins][:group]
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
   variables({})
   notifies :restart, 'service[jenkins]', :delayed
 end
