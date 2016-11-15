@@ -58,5 +58,6 @@ Vagrant.configure(2) do |config|
     v.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
   end
 
-  config.vm.provision 'shell', inline: 'firewall-cmd --permanent --add-port=8080/tcp && firewall-cmd --reload'
+  # config.vm.provision 'shell', inline: 'firewall-cmd --permanent --add-port=8080/tcp && firewall-cmd --reload'
+  config.vm.provision 'shell', inline: 'systemctl stop firewalld'
 end
