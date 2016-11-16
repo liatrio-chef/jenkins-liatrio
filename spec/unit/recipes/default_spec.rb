@@ -27,4 +27,8 @@ describe 'jenkins-liatrio::default' do
       mode: '0755'
     )
   end
+
+  it 'installs unzip package' do
+    expect(chef_run).to install_yum_package('unzip')
+  end
 end

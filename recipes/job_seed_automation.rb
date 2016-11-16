@@ -7,15 +7,15 @@
 
 # Create AutomationManagementJob seed job
 template "#{node[:jenkins][:master][:home]}/jobs/AutomationManagementJob-config.xml" do
-  source "jobs/AutomationManagementJob-config.xml.erb"
-  mode "0644"
+  source 'jobs/AutomationManagementJob-config.xml.erb'
+  mode '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
   variables({
             })
 end
 
-jenkins_job "AutomationManagementJob" do
+jenkins_job 'AutomationManagementJob' do
   config "#{node[:jenkins][:master][:home]}/jobs/AutomationManagementJob-config.xml"
   action [:create, :build]
   not_if { ::File.exist?("#{node[:jenkins][:master][:home]}/jobs/AutomationManagementJob/config.xml") }
