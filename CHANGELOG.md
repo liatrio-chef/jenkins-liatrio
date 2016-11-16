@@ -3,6 +3,14 @@ jenkins-liatrio CHANGELOG
 
 This file is used to list changes made in each version of the jenkins-liatrio cookbook.
 
+1.1.1 - 11.15.2016
+-----
+- Ticket: LTA-95 by Justin Bankes
+  - Updated Vagrantfile to use bento/centos box.
+  - Added java to the runlist in the vagrantfile
+  - Added install _unzip_ via yum_package resource.
+  - Ran Rubocop linter with -a flag
+
 1.1.0 - 11.15.2016
 -----
 - Ticket: LTA-89 by Justin Bankes

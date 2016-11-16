@@ -2,39 +2,44 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = 'liatrio/centos7chefjava'
+  config.vm.box = 'bento/centos-7.2'
 
   config.berkshelf.enabled = true
-  config.vm.provision "chef_solo" do |chef|
-
+  config.vm.provision 'chef_solo' do |chef|
     # path to data bag secret file
-    chef.encrypted_data_bag_secret_key_path = "./encrypted_data_bag_secret_vagrant"
+    chef.encrypted_data_bag_secret_key_path =
+      './encrypted_data_bag_secret_vagrant'
 
     # path to data_bags directory relative to cwd
-    chef.data_bags_path = "data_bags/"
+    chef.data_bags_path = 'data_bags/'
 
-    chef.add_recipe "jenkins-liatrio::default"
-    chef.add_recipe "jenkins-liatrio::install_plugins"
-    chef.add_recipe "jenkins-liatrio::plugin_maven"
-    chef.add_recipe "jenkins-liatrio::plugin_sonar"
-    #chef.add_recipe "jenkins-liatrio::plugin_hygieia"
-    chef.add_recipe "jenkins-liatrio::m2_settings"
-    chef.add_recipe "jenkins-liatrio::security"
-    chef.add_recipe "jenkins-liatrio::create_jobs"
-    chef.add_recipe "jenkins-liatrio::config_xml"
+    chef.add_recipe 'java'
+    chef.add_recipe 'jenkins-liatrio::default'
+    chef.add_recipe 'jenkins-liatrio::install_plugins'
+    chef.add_recipe 'jenkins-liatrio::plugin_maven'
+    chef.add_recipe 'jenkins-liatrio::plugin_sonar'
+    # chef.add_recipe "jenkins-liatrio::plugin_hygieia"
+    chef.add_recipe 'jenkins-liatrio::m2_settings'
+    chef.add_recipe 'jenkins-liatrio::security'
+    chef.add_recipe 'jenkins-liatrio::create_jobs'
+    chef.add_recipe 'jenkins-liatrio::config_xml'
     chef.json = {
+      'java' => {
+        'jdk_version' => '8',
+        'install_flavor' => 'openjdk'
+      },
       'jenkins' => {
         'master' => {
           'version' => '2.28-1.1',
           'jvm_options' => '-Djenkins.install.runSetupWizard=false',
           'host' => 'localhost',
           'port' => 8080,
-          #"repostiroy" => "http://mirrors.jenkins-ci.org/redhat/"
+          # "repostiroy" => "http://mirrors.jenkins-ci.org/redhat/"
         }
       },
       'jenkins_liatrio' => {
         'install_plugins' => {
-          #'plugins_list' => %w(git github naginator sonar),
+          # 'plugins_list' => %w(git github naginator sonar),
           'enablearchiva' => false,
           'maven_mirror' => 'http://localhost:8081/repository/internal',
           'enablesonar' => false,
@@ -58,6 +63,5 @@ Vagrant.configure(2) do |config|
     v.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
   end
 
-  # config.vm.provision 'shell', inline: 'firewall-cmd --permanent --add-port=8080/tcp && firewall-cmd --reload'
   config.vm.provision 'shell', inline: 'systemctl stop firewalld'
 end

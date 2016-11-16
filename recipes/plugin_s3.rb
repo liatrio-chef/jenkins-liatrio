@@ -6,10 +6,10 @@
 #
 
 # load our encrypted data bag
-jenk_databag = Chef::EncryptedDataBagItem.load("jenkins", "cred")
+jenk_databag = Chef::EncryptedDataBagItem.load('jenkins', 'cred')
 
 # create the jenkins encrypted aws secretkey as an attribute
-ruby_block "generate_databasesecret_crypt_secretkey" do
+ruby_block 'generate_databasesecret_crypt_secretkey' do
   block do
     Chef::Resource::RubyBlock.send(:include, Chef::Mixin::ShellOut)
     command = "#{node[:jenkins][:master][:home]}/jenkins_crypt.sh #{jenk_databag['secretkey']}"
@@ -25,12 +25,12 @@ secretkey_stripped = node[:jenkins_liatrio][:secretkey]
 
 # jenkins config for aws s3
 template "#{node[:jenkins][:master][:home]}/hudson.plugins.s3.S3BucketPublisher.xml" do
-  source   "hudson.plugins.s3.S3BucketPublisher.xml.erb"
-  mode     "0644"
+  source   'hudson.plugins.s3.S3BucketPublisher.xml.erb'
+  mode     '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
-  variables(accesskey: jenk_databag["accesskey"],
+  variables(accesskey: jenk_databag['accesskey'],
             secretkey: secretkey_stripped)
-  notifies :restart, "service[jenkins]", :delayed
+  notifies :restart, 'service[jenkins]', :delayed
   sensitive true
 end
