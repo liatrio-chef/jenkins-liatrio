@@ -42,8 +42,3 @@ remote_file '/opt/jenkins-cli.jar' do
   source "http://#{node[:jenkins][:master][:host]}:#{node[:jenkins][:master][:port]}/jnlpJars/jenkins-cli.jar"
   not_if { ::File.exist?('/opt/jenkins-cli.jar') }
 end
-
-# Install unzip on system
-yum_package 'unzip' do
-  action :install
-end
