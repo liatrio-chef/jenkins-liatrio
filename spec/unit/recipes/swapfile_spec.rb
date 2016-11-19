@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "jenkins-theia::swapfile" do
+describe "jenkins-liatrio::swapfile" do
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
   it "runs create_swapfile bash script with the default action" do

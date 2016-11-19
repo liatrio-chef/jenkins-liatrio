@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "jenkins-theia::create_jobs" do
+describe "jenkins-liatrio::create_jobs" do
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
   it "creates template /var/lib/jenkins/jobs/AutomationManagementJob-config.xml" do

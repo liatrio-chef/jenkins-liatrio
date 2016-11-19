@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "jenkins-theia::apache2" do
+describe "jenkins-liatrio::apache2" do
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
   # provide before each it

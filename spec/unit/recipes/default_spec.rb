@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "jenkins-theia::default" do
+describe "jenkins-liatrio::default" do
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
   packages = %w{java-1.8.0-openjdk-devel java-1.8.0-openjdk maven maven-war-plugin git wget bzip2 groovy epel-release}
