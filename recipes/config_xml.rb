@@ -14,7 +14,6 @@ template "#{node[:jenkins][:master][:home]}/config.xml" do
   mode     '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
-  variables(git_auth_token: jenk_databag['git_auth_token']
-           )
+  variables(git_auth_token: jenk_databag['git_auth_token'])
   notifies :restart, 'service[jenkins]', :delayed
 end

@@ -56,7 +56,7 @@ end
 # updated our ssl.conf with site specifics
 template "#{node['apache']['dir']}/conf-enabled/ssl.conf" do
   source 'ssl.conf.erb'
-  mode 0644
+  mode 0o644
   owner 'root'
   group 'root'
   variables(

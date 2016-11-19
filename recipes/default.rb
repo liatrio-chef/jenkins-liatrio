@@ -27,9 +27,9 @@ ruby_block 'before_wait_for_jenkins' do
   block do
     loop do
       puts "curl http://#{node[:jenkins][:master][:host]}:#{node[:jenkins][:master][:port]}/jnlpJars/jenkins-cli.jar"
-      ` curl http://#{node[:jenkins][:master][:host]}:#{node[:jenkins][:master][:port]}/jnlpJars/jenkins-cli.jar -X HEAD -I -s | grep "200 OK" `
+      `curl http://#{node[:jenkins][:master][:host]}:#{node[:jenkins][:master][:port]}/jnlpJars/jenkins-cli.jar -X HEAD -I -s | grep "200 OK"`
       exitstatus = $CHILD_STATUS.exitstatus
-      (puts '+++ +++ before_wait_for_jenkins should exit!' && break) if 0 == exitstatus
+      (puts '+++ +++ before_wait_for_jenkins should exit!' && break) if exitstatus.zero?
       puts '+++ +++ Sleeping in before_wait_for_jenkins...'
       sleep node[:jenkins_liatrio][:sleep_interval_small]
     end

@@ -11,5 +11,5 @@ template "#{node[:jenkins][:master][:home]}/.gitconfig" do
   mode     '0644'
   owner node[:jenkins][:master][:user]
   group node[:jenkins][:master][:group]
-  variables()
+  variables
 end
