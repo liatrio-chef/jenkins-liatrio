@@ -24,7 +24,7 @@ jenkins_script 'configure mail' do
     desc.setUseSsl(false)
     desc.setSmtpPort("25")
     desc.save()
-  EOH
+   EOH
   notifies :create, 'ruby_block[set the mail_configured flag]', :immediately
   not_if { node.attribute?('mail_configured') || ::File.file?("#{node[:jenkins][:master][:home]}/mail_configured") }
 end
