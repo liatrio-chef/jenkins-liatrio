@@ -8,7 +8,7 @@
       <optOut>false</optOut>
     </com.chikli.hudson.plugin.naginator.NaginatorOptOutProperty>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.3.5">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.0.0">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -29,14 +29,13 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>H/2 * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
+    <com.cloudbees.jenkins.GitHubPushTrigger plugin="github@1.22.3">
+      <spec></spec>
+    </com.cloudbees.jenkins.GitHubPushTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <javaposse.jobdsl.plugin.ExecuteDslScripts plugin="job-dsl@1.53">
+    <javaposse.jobdsl.plugin.ExecuteDslScripts plugin="job-dsl@1.52">
       <targets>chef_automation_seed_job.groovy</targets>
       <usingScriptText>false</usingScriptText>
       <ignoreExisting>false</ignoreExisting>
