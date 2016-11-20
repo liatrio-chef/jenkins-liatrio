@@ -57,14 +57,12 @@
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>true</sendToIndividuals>
     </hudson.tasks.Mailer>
-    <org.jenkinsci.plugins.github.status.GitHubCommitStatusSetter plugin="github@1.22.3">
-      <commitShaSource class="org.jenkinsci.plugins.github.status.sources.BuildDataRevisionShaSource"/>
-      <reposSource class="org.jenkinsci.plugins.github.status.sources.AnyDefinedRepositorySource"/>
-      <contextSource class="org.jenkinsci.plugins.github.status.sources.DefaultCommitContextSource"/>
-      <statusResultSource class="org.jenkinsci.plugins.github.status.sources.ConditionalStatusResultSource"/>
-      <statusBackrefSource class="org.jenkinsci.plugins.github.status.sources.BuildRefBackrefSource"/>
-      <errorHandlers/>
-    </org.jenkinsci.plugins.github.status.GitHubCommitStatusSetter>
+    <com.cloudbees.jenkins.GitHubCommitNotifier plugin="github@1.22.3">
+      <statusMessage>
+        <content></content>
+      </statusMessage>
+      <resultOnFailure>FAILURE</resultOnFailure>
+    </com.cloudbees.jenkins.GitHubCommitNotifier>
     <jenkins.plugins.slack.SlackNotifier plugin="slack@2.0.1">
       <teamDomain></teamDomain>
       <authToken></authToken>
@@ -76,10 +74,10 @@
       <notifyNotBuilt>false</notifyNotBuilt>
       <notifyUnstable>false</notifyUnstable>
       <notifyFailure>true</notifyFailure>
-      <notifyBackToNormal>false</notifyBackToNormal>
+      <notifyBackToNormal>true</notifyBackToNormal>
       <notifyRepeatedFailure>false</notifyRepeatedFailure>
       <includeTestSummary>false</includeTestSummary>
-      <commitInfoChoice>NONE</commitInfoChoice>
+      <commitInfoChoice>AUTHORS_AND_TITLES</commitInfoChoice>
       <includeCustomMessage>false</includeCustomMessage>
       <customMessage></customMessage>
     </jenkins.plugins.slack.SlackNotifier>
