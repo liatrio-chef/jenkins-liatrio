@@ -51,6 +51,7 @@ file "#{node['apache']['dir']}/ssl/#{site_fqdn}.key" do
   mode 0o400
   sensitive true
   notifies :restart, 'service[apache2]', :delayed
+  sensitive true
 end
 
 # updated our ssl.conf with site specifics

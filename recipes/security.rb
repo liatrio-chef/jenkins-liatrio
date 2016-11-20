@@ -38,6 +38,7 @@ jenkins_user 'admin' do
   public_keys [admin_id_rsa_pub_key.to_s]
   not_if { node.attribute?('security_enabled') || ::File.file?("#{node[:jenkins][:master][:home]}/security_enabled") }
   notifies :execute, 'jenkins_script[configure_permissions]', :immediately
+  sensitive true
 end
 
 # Configure the permissions so that login is required and the admin user is an administrator
