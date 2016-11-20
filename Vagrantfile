@@ -18,11 +18,12 @@ Vagrant.configure(2) do |config|
     chef.add_recipe 'jenkins-liatrio::install_plugins'
     chef.add_recipe 'jenkins-liatrio::plugin_maven'
     chef.add_recipe 'jenkins-liatrio::plugin_sonar'
+    chef.add_recipe 'jenkins-liatrio::configure_mail'
     # chef.add_recipe "jenkins-liatrio::plugin_hygieia"
     chef.add_recipe 'jenkins-liatrio::m2_settings'
     chef.add_recipe 'jenkins-liatrio::security'
     chef.add_recipe 'jenkins-liatrio::create_jobs'
-    chef.add_recipe 'jenkins-liatrio::config_xml'
+
     chef.json = {
       'java' => {
         'jdk_version' => '8',

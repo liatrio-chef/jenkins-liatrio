@@ -18,10 +18,6 @@ describe 'jenkins-liatrio::apache2' do
     end
   end
 
-  it 'creates /etc/httpd/ssl with the default action' do
-    expect(chef_run).to create_remote_directory('/etc/httpd/ssl')
-  end
-
   it 'creates /etc/httpd/ssl/somesite.liatrio.com with attributes' do
     expect(chef_run).to create_file('/etc/httpd/ssl/somesite.liatrio.com.key').with(
       user:   'root',
