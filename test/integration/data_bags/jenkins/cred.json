@@ -1,0 +1,45 @@
+{
+  "id": "cred",
+  "admin_id_rsa": {
+    "encrypted_data": "2NA9GlMPbdFJkX9fXByEkgeov5NnHBO/Wl1irq09aMTcoyr4JuVtmonPdXq6\nzz0gQpqU6EMQvBhmDWSgmNCZDg==\n",
+    "iv": "QbP2WMcteGxUatQ9jJgnsQ==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "admin_id_rsa_pub": {
+    "encrypted_data": "AWpWeiY4Fedzd796jF5OiWTVhHQbP3FIx3twzKWr71Y=\n",
+    "iv": "f4R4fakO+sVl8hQVEv7Idg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "admin_passwrd": {
+    "encrypted_data": "9b5SwDXjshEFvoNImsuLNadqVEQjBVvJB2YKJZPuk/A=\n",
+    "iv": "v3V2+OPCqvNRccKE/HijLw==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "ssl-key": {
+    "encrypted_data": "kDUUBUGJI8pjBx3PhVcHbb/qRA/quhwHpv/z4Q+Hu82bdW6UmALrNTAwAV09\nXKh9EUH6qq+AfuOK4wPUobalkw==\n",
+    "iv": "QFiolYfGJYCYA1kFHHos0w==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "accesskey": {
+    "encrypted_data": "GWYQp6W55/OToiy1mZjyU4cIR2imTJizprBAl8n/sDE=\n",
+    "iv": "kWFRGv+8K0CKK0T6Z+YO5g==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "secret_key": {
+    "encrypted_data": "X59PywulMMxHXMC0AMLJEzX7J+NnOQtNAPQAWNjYjS8=\n",
+    "iv": "u/gx4IM7QwF0fkRSdb4MIA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "site_fqdn": {
+    "encrypted_data": "oRXs10AYr7aL5JgxYd2BL3wmXSy7ShtX6iMdm4ZXbjg=\n",
+    "iv": "3Ls4DXWzaeljXCdw5CqDlg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}
