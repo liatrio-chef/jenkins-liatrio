@@ -13,8 +13,4 @@ describe 'jenkins-liatrio::default' do
   it 'runs ruby_block `before_wait_for_jenkins`' do
     expect(chef_run).to run_ruby_block('before_wait_for_jenkins')
   end
-
-  it 'creates remote_file `/opt/jenkins-cli.jar`' do
-    expect(chef_run).to create_remote_file('/opt/jenkins-cli.jar')
-  end
 end
