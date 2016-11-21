@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'jenkins-liatrio::default' do
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
-  packages = %w(java-1.8.0-openjdk-devel java-1.8.0-openjdk maven maven-war-plugin git wget unzip bzip2)
+  packages = %w(java-1.8.0-openjdk-devel java-1.8.0-openjdk git wget unzip bzip2)
   packages.each do |pkg|
     it "installs package #{pkg}" do
       expect(chef_run).to install_package(pkg)
