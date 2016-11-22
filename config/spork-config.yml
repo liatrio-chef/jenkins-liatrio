@@ -1,0 +1,14 @@
+default_environments:
+  - _default
+  - jenkins
+version_change_threshold:
+plugins:
+  foodcritic:
+    tags: ['~any']
+  rubocop:
+    epic_fail: true
+    show_name: false
+    autocorrect: false
+    out_file: <file>
+    sev_level: <C|W|E>
+    lint: false

@@ -4,7 +4,7 @@ maintainer_email 'drew@liatrio.com'
 license          'All rights reserved'
 description      'Installs/Configures jenkins-liatrio'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.3.3'
+version          '1.3.4'
 
 depends 'java'
 depends 'jenkins', '~> 2.6.0'
