@@ -8,8 +8,8 @@
 # load encrypted data bag
 jenk_databag = Chef::EncryptedDataBagItem.load('jenkins', 'cred')
 
-jenkins_secret_text_credentials 'CHEFUPLOADER' do
-  id          'CHEFUPLOADER'
+jenkins_private_key_credentials 'CHEFUPLOADER' do
+  id 'bf42b6f2-54ab-4172-a24c-48b2bec6737f'
   description 'Chef cookbook uploader pem file'
-  secret      jenk_databag['chefuploader']
+  private_key jenk_databag['chefuploader']
 end
