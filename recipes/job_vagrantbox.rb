@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: jenkins-liatrio
-# Attributes:: create_jobs
+# Attributes:: job_vagrantbox
 #
 # Author: Drew Holt <drew@liatrio.com>
 #
