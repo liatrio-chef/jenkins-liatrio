@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'jenkins-liatrio::create_jobs' do
+describe 'jenkins-liatrio::job_vagrantbox' do
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
   it 'creates template /var/lib/jenkins/jobs/petclinic-simple-config.xml' do
