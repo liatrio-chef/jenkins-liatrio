@@ -5,6 +5,9 @@
 # Author: Drew Holt <drew@liatrio.com>
 #
 
+# include security.rb, without the call jenkins_crypt.sh will fail
+include_recipe 'jenkins-liatrio::security'
+
 # load our encrypted data bag
 jenk_databag = Chef::EncryptedDataBagItem.load('jenkins', 'cred')
 
