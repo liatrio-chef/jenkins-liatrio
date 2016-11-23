@@ -6,6 +6,14 @@
 #
 require 'English'
 
+# install java
+# XXX take a decision on if we want to manage node attributes in the recipe.rb
+# or manage it in 3 places on chef server, vagrantfile, and test kitchen
+include_recipe 'java::default'
+
+# we need epel for nodejs, ruby, etc
+include_recipe 'yum-epel::default'
+
 # install os packages needed for jenkins via yum
 node[:jenkins_liatrio][:packages].each do |pkg|
   package pkg

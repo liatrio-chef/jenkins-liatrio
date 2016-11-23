@@ -13,7 +13,6 @@ Vagrant.configure(2) do |config|
     # path to data_bags directory relative to cwd
     chef.data_bags_path = 'data_bags/'
 
-    chef.add_recipe 'java'
     chef.add_recipe 'jenkins-liatrio::default'
     chef.add_recipe 'jenkins-liatrio::install_plugins'
     chef.add_recipe 'jenkins-liatrio::plugin_maven'
