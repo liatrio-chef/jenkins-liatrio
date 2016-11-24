@@ -6,7 +6,7 @@ description      'Installs/Configures jenkins-liatrio'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '1.4.2'
 
-depends 'java'
+depends 'java', '~> 1.42.0'
 depends 'jenkins', '~> 2.6.0'
 depends 'apache2', '~> 3.2.2'
-depends 'yum-epel', '~> 0.7.0'
+depends 'yum-epel', '~> 1.0.2'
