@@ -9,6 +9,7 @@
 
 # create a 4GB swapfile
 bash 'create_swapfile' do
+  action :run
   code 'dd if=/dev/zero of=/var/swapfile bs=1M count=4096 && chmod 600 /var/swapfile && mkswap /var/swapfile'
   not_if { File.exist?('/var/swapfile') }
 end
@@ -22,5 +23,6 @@ end
 
 # mount all swaps in /etc/fstab
 bash 'activate_swap' do
+  action :run
   code 'swapon -a'
 end
