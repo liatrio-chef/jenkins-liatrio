@@ -35,8 +35,8 @@ describe 'jenkins-liatrio::default' do
     expect(chef_run).to run_ruby_block('before_wait_for_jenkins')
   end
 
-  it 'creates the remote file jenkins-cli.jar' do
-    expect(chef_run).to create_remote_file('/opt/jenkins-cli.jar')
+  it 'creates the remote file jenkins-cli.jar if it is missing' do
+    expect(chef_run).to create_remote_file_if_missing('/opt/jenkins-cli.jar')
   end
 
   # need to test not_if here

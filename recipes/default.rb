@@ -47,7 +47,7 @@ end
 
 # download jenkins-cli.jar into /opt
 remote_file '/opt/jenkins-cli.jar' do
-  action :create
+  action :create_if_missing
   source "http://#{node[:jenkins][:master][:host]}:#{node[:jenkins][:master][:port]}/jnlpJars/jenkins-cli.jar"
-  not_if { ::File.exist?('/opt/jenkins-cli.jar') }
+  # not_if { ::File.exist?('/opt/jenkins-cli.jar') }
 end
