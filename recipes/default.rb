@@ -15,7 +15,7 @@ include_recipe 'java::default'
 include_recipe 'yum-epel::default'
 
 # we need swap
-swap_file '/etc/swapfile' do
+swap_file '/var/swapfile' do
   size 4096
 end
 
