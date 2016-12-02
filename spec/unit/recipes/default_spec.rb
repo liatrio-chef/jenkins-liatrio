@@ -27,8 +27,10 @@ describe 'jenkins-liatrio::default' do
     end
   end
 
-  it 'includes jenkins master recipe' do
-    expect(chef_run).to include_recipe('jenkins::master')
+  it 'creates a swapfile' do
+    expect(chef_run).to create_swap_file('/var/swapfile').with(
+      size: 4096
+    )
   end
 
   it 'runs ruby_block `before_wait_for_jenkins`' do
