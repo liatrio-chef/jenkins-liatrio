@@ -10,6 +10,12 @@ describe 'jenkins-liatrio::default' do
     end
   end
 
+  it 'creates a swapfile' do
+    expect(chef_run).to create_swap_file('/etc/swapfile').with(
+      size: 4096
+    )
+  end
+
   it 'runs ruby_block `before_wait_for_jenkins`' do
     expect(chef_run).to run_ruby_block('before_wait_for_jenkins')
   end
