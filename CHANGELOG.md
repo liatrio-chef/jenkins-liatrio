@@ -3,6 +3,11 @@ jenkins-liatrio CHANGELOG
 
 This file is used to list changes made in each version of the jenkins-liatrio cookbook.
 
+1.4.5 
+-----
+- Ticket: LTA-148 by Justin Bankes
+- Added initscipts install in .kitchen.yml
+
 1.4.4 
 -----
 - Ticket: LTA 135 by Justin Bankes
