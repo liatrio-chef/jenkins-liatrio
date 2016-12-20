@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
     chef.add_recipe 'jenkins-liatrio::install_nodejs'
     chef.add_recipe 'jenkins-liatrio::plugin_maven'
     chef.add_recipe 'jenkins-liatrio::git_settings'
-    chef.add_recipe 'jenkins-liatrio::plugin_s3'
+    # chef.add_recipe 'jenkins-liatrio::plugin_s3' # not needed for Vagrant
     # chef.add_recipe 'jenkins-liatrio::security' # not needed for Vagrant
 
     chef.add_recipe 'jenkins-liatrio::job_vagrantbox' # Vagrant specific jobs
