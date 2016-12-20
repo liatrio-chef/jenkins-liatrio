@@ -4,9 +4,21 @@ A wrapper cookbook that installs jenkins to be used with archiva-liatrio, sonarq
 
 Requirements
 ------------
-Berkshelf
+The following versions of ChefDK, Vagrant, and VirtualBox.
+```
+$ chef -v
+Chef Development Kit Version: 0.16.28
+chef-client version: 12.12.15
+delivery version: master (921828facad8a8bbbd767368bfc72f19bd30e7bd)
+berks version: 4.3.5
+kitchen version: 1.10.2
 
-Vagrant 1.9.1
+$ vagrant -v
+Vagrant 1.8.4
+
+$ VBoxManage -v
+5.0.26r108824
+```
 
 Usage
 -----
