@@ -12,15 +12,15 @@
         <artifactNumToKeep>-1</artifactNumToKeep>
       </strategy>
     </jenkins.model.BuildDiscarderProperty>
-    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.18.2">
-      <projectUrl>https://github.com/drewliatro/spring-petclinic/</projectUrl>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.22.3">
+      <projectUrl>https://github.com/drew-holt/spring-petclinic/</projectUrl>
       <displayName></displayName>
     </com.coravy.hudson.plugins.github.GithubProjectProperty>
-    <com.chikli.hudson.plugin.naginator.NaginatorOptOutProperty plugin="naginator@1.17">
+    <com.chikli.hudson.plugin.naginator.NaginatorOptOutProperty plugin="naginator@1.17.2">
       <optOut>false</optOut>
     </com.chikli.hudson.plugin.naginator.NaginatorOptOutProperty>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.0">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.0.0">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -49,7 +49,7 @@
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
     <groupId>org.springframework.samples</groupId>
-    <artifactId>spring-petclinic</artifactId>
+    <artifactId>springboot-petclinic</artifactId>
   </rootModule>
   <goals>clean deploy</goals>
   <defaultGoals>install</defaultGoals>
@@ -69,7 +69,7 @@
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
   <publishers>
-    <jenkins.plugins.hygieia.HygieiaPublisher plugin="hygieia-publisher@1.0-SNAPSHOT">
+    <jenkins.plugins.hygieia.HygieiaPublisher plugin="hygieia-publisher@1.1-SNAPSHOT">
       <hygieiaBuild>
         <publishBuildStart>true</publishBuildStart>
       </hygieiaBuild>
@@ -100,7 +100,7 @@
         <publishDeployStart>true</publishDeployStart>
       </hygieiaDeploy>
     </jenkins.plugins.hygieia.HygieiaPublisher>
-    <com.chikli.hudson.plugin.naginator.NaginatorPublisher plugin="naginator@1.17">
+    <com.chikli.hudson.plugin.naginator.NaginatorPublisher plugin="naginator@1.17.2">
       <regexpForRerun></regexpForRerun>
       <rerunIfUnstable>false</rerunIfUnstable>
       <rerunMatrixPart>false</rerunMatrixPart>
@@ -114,8 +114,7 @@
   </publishers>
   <buildWrappers/>
   <prebuilders>
-    <% if node[:jenkins_liatrio][:install_plugins][:enablesonar] == true %>
-    <hudson.plugins.sonar.SonarRunnerBuilder plugin="sonar@2.4">
+    <hudson.plugins.sonar.SonarRunnerBuilder plugin="sonar@2.5">
       <project></project>
       <properties></properties>
       <javaOpts></javaOpts>
@@ -123,7 +122,6 @@
       <jdk>(Inherit From Job)</jdk>
       <task></task>
     </hudson.plugins.sonar.SonarRunnerBuilder>
-    <% end %>
   </prebuilders>
   <postbuilders/>
   <runPostStepsIfResult>
