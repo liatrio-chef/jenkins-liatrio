@@ -26,6 +26,14 @@ template '/var/lib/jenkins/hudson.plugins.sonar.SonarPublisher.xml' do
   variables({})
 end
 
+template '/var/lib/jenkins/hudson.plugins.sonar.SonarGlobalConfiguration.xml' do
+  source   'hudson.plugins.sonar.SonarGlobalConfiguration.xml.erb'
+  mode     '0644'
+  owner node[:jenkins][:master][:user]
+  group node[:jenkins][:master][:group]
+  variables({})
+end
+
 template '/var/lib/jenkins/hudson.plugins.sonar.SonarRunnerInstallation.xml' do
   source   'hudson.plugins.sonar.SonarRunnerInstallation.xml.erb'
   mode     '0644'
