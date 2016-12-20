@@ -6,6 +6,9 @@ Vagrant.configure(2) do |config|
 
   config.berkshelf.enabled = true
   config.vm.provision 'chef_solo' do |chef|
+
+    chef.version = '12.16.42'
+
     # path to data bag secret file
     chef.encrypted_data_bag_secret_key_path =
       './encrypted_data_bag_secret_vagrant'
