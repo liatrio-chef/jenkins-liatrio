@@ -18,8 +18,9 @@ Vagrant.configure(2) do |config|
     chef.data_bags_path = 'data_bags/'
 
     # Add chef recipes from chef-config
-    chef_config = YAML.load_file('./chef-config.yml')
-    chef_config['run_list'].each do |recipe_string|
+    chef_config = YAML.load_file('./.kitchen.local.yml')
+    puts chef_config
+    chef_config['suites'][0]['run_list'].each do |recipe_string|
       # Extract recipe from the recipe_string
       recipe = recipe_string.split(/\[|\]/)[1]
       chef.add_recipe recipe
