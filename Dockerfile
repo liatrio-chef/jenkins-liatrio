@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER Xabier de Zuazo "xabier@zuazo.org"
+MAINTAINER Robert Kelly "robert@liatrio.com"
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/chef/bin:/opt/chef/embedded/bin \
     LANG=en_US.UTF-8 \
