@@ -31,7 +31,7 @@ COPY . /tmp/jenkinscookbook
 # Download and install the cookbook and its dependencies in the cookbook path:
  RUN berks vendor -b /tmp/jenkinscookbook/Berksfile $COOKBOOK_PATH
 # Run Chef Client, runs in local mode by default:
- RUN chef-client -r "recipe[apt],recipe[jenkinscookbook]"
+# RUN chef-client -r "recipe[apt],recipe[jenkinscookbook]"
  RUN chef-client -r "recipe[yum-epel::default],recipe[jenkins-liatrio::default],recipe[jenkins-liatrio::plugin_maven]"
 
 # CMD to run you application
