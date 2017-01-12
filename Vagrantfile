@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require 'yaml'
+
 Vagrant.configure(2) do |config|
   config.vm.box = 'bento/centos-7.2'
 
@@ -15,25 +17,14 @@ Vagrant.configure(2) do |config|
     # path to data_bags directory relative to cwd
     chef.data_bags_path = 'data_bags/'
 
-    chef.add_recipe 'yum-epel::default'
-    # chef.add_recipe 'docker-engine::default' not needed for vagrant
-    # chef.add_recipe 'jenkins-liatrio::apache2' # not needed for Vagrant
-    chef.add_recipe 'jenkins-liatrio::default'
-    # chef.add_recipe 'jenkins-liatrio::configure_mail' # not needed for Vagrant
-    # chef.add_recipe 'jenkins-liatrio::configure_global_env' # not needed for Vagrant
-    chef.add_recipe 'jenkins-liatrio::install_plugins'
-    # chef.add_recipe 'jenkins-liatrio::install_chefdk' # not needed for Vagrant
-    chef.add_recipe 'jenkins-liatrio::install_nodejs'
-    chef.add_recipe 'jenkins-liatrio::plugin_maven'
-    chef.add_recipe 'jenkins-liatrio::git_settings'
-    # chef.add_recipe 'jenkins-liatrio::plugin_s3' # not needed for Vagrant
-    # chef.add_recipe 'jenkins-liatrio::security' # not needed for Vagrant
-
-    chef.add_recipe 'jenkins-liatrio::job_vagrantbox' # Vagrant specific jobs
-    # chef.add_recipe "jenkins-liatrio::plugin_swapfile" # not needed for Vagrant
-
-    # chef.add_recipe "jenkins-liatrio::plugin_hygieia" # for hygieia pipeline
-    # chef.add_recipe 'jenkins-liatrio::m2_settings' # for hygieia pipeline
+    # Add chef recipes from chef-config
+    chef_config = YAML.load_file('./.kitchen.local.yml')
+    puts chef_config
+    chef_config['suites'][0]['run_list'].each do |recipe_string|
+      # Extract recipe from the recipe_string
+      recipe = recipe_string.split(/\[|\]/)[1]
+      chef.add_recipe recipe
+    end
 
     chef.json = {
       'java' => {
