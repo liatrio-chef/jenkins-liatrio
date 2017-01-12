@@ -18,8 +18,10 @@ Vagrant 1.8.4
 
 $ VBoxManage -v
 5.0.26r108824
-```
-
+```  
+  
+Warning: Do not have `vagrant-vbguest` plugin installed as there is a conflict.  
+  
 Usage
 -----
 #### jenkins-liatrio::default
