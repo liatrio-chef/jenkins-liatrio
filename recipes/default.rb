@@ -14,10 +14,15 @@ include_recipe 'java::default'
 # we need epel for nodejs, ruby, etc
 include_recipe 'yum-epel::default'
 
-# we need swap
-swap_file '/var/swapfile' do
-  size 4096
+execute 'run init if in docker' do
+  command '/usr/sbin/init'
+  not_if 'ps aux | grep init'
 end
+
+# we need swap
+#swap_file '/var/swapfile' do
+#  size 4096
+#end
 
 # install os packages needed for jenkins via yum
 node[:jenkins_liatrio][:packages].each do |pkg|

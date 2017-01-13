@@ -1,5 +1,6 @@
-FROM centos:7
+FROM centos:centos7
 MAINTAINER Robert Kelly "robert@liatrio.com"
+ENV container docker
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/chef/bin:/opt/chef/embedded/bin \
     LANG=en_US.UTF-8 \
@@ -22,19 +23,18 @@ RUN mkdir -p $COOKBOOK_PATH && \
 #      git && \
 #    yum clean all
 
-CMD ["bash"]
-
-#FROM zuazo/chef-local:centos-7
+#CMD ["bash"]
 
 # Copy the cookbook from the current working directory:
 COPY . /tmp/jenkinscookbook
+COPY docker-chef.json /
 # Download and install the cookbook and its dependencies in the cookbook path:
- RUN berks vendor -b /tmp/jenkinscookbook/Berksfile $COOKBOOK_PATH
+RUN berks vendor -b /tmp/jenkinscookbook/Berksfile $COOKBOOK_PATH
 # Run Chef Client, runs in local mode by default:
 # RUN chef-client -r "recipe[apt],recipe[jenkinscookbook]"
- RUN chef-client -r "recipe[yum-epel::default],recipe[jenkins-liatrio::default],recipe[jenkins-liatrio::plugin_maven]"
+RUN chef-client -j docker-chef.json -r "recipe[yum-epel::default],recipe[jenkins-liatrio::default],recipe[jenkins-liatrio::plugin_maven]"
 
 # CMD to run you application
 # Now you can create a Docker image and run your application:
- RUN docker build -t mycookbook .
- RUN docker run -d mycookbook bash
+# RUN docker build -t mycookbook .
+# RUN docker run -d mycookbook bash
