@@ -45,6 +45,9 @@ RUN berks vendor -b /tmp/jenkinscookbook/Berksfile $COOKBOOK_PATH
 # Run Chef Client, runs in local mode by default:
 RUN chef-client -j docker-chef.json -r "recipe[yum-epel::default],recipe[jenkins-liatrio::default],recipe[jenkins-liatrio::install_plugins],recipe[jenkins-liatrio::plugin_maven],recipe[jenkins-liatrio::install_nodejs],recipe[jenkins-liatrio::git_settings]"
 
+# Start Jenkins service The tail command prevents the command from quitting which previously stopped service
+CMD service jenkins start && tail -F var/log/jenkins/error
+
 EXPOSE 8080
 
 # CMD to run you application
