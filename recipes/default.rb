@@ -16,13 +16,15 @@ include_recipe 'yum-epel::default'
 
 execute 'run init if in docker' do
   command '/usr/sbin/init'
+  action :run
   not_if 'ps aux | grep init'
 end
 
 # we need swap
-# swap_file '/var/swapfile' do
-#  size 4096
-# end
+swap_file '/var/swapfile' do
+ size 4096
+ persist true
+end
 
 # install os packages needed for jenkins via yum
 node[:jenkins_liatrio][:packages].each do |pkg|

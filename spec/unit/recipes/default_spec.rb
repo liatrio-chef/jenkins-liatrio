@@ -5,6 +5,14 @@ require 'spec_helper'
 describe 'jenkins-liatrio::default' do
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
+  before do
+    stub_command("ps aux | grep init").and_return(false)
+  end
+
+  # it 'runs init if in docker' do
+  #   expect(chef_run).to run_execute('run init if in docker')
+  # end
+
   it 'includes java default recipe' do
     expect(chef_run).to include_recipe('java::default')
   end
