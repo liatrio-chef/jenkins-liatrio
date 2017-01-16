@@ -20,9 +20,9 @@ execute 'run init if in docker' do
 end
 
 # we need swap
-#swap_file '/var/swapfile' do
+# swap_file '/var/swapfile' do
 #  size 4096
-#end
+# end
 
 # install os packages needed for jenkins via yum
 node[:jenkins_liatrio][:packages].each do |pkg|
