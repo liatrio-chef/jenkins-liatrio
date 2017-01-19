@@ -3,14 +3,13 @@
 
 require 'yaml'
 
-[                                                                                  
-  { :name => "vagrant-berkshelf", :version => ">= 5.0.0" }                         
-].each do |plugin|                                                                 
-                                                                                   
-  if not Vagrant.has_plugin?(plugin[:name], plugin[:version])                      
+[
+  { name: 'vagrant-berkshelf', version: '>= 5.0.0' }
+].each do |plugin|
+  unless Vagrant.has_plugin?(plugin[:name], plugin[:version])
     raise "#{plugin[:name]} #{plugin[:version]} is required. Please run `vagrant plugin install #{plugin[:name]}`"
-  end                                                                              
-end 
+  end
+end
 
 Vagrant.configure(2) do |config|
   config.vm.box = 'bento/centos-7.2'
