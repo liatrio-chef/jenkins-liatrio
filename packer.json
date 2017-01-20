@@ -1,0 +1,27 @@
+{
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "echo '' >/usr/sbin/swapon # Hack to stub swapfile creation",
+        "yum update -y && yum install -y sudo curl initscripts"
+      ]
+    },
+    {
+      "type": "chef-solo",
+      "cookbook_paths": ["../", "./cookbooks"],
+      "data_bags_path": "./data_bags",
+      "encrypted_data_bag_secret_path": "./encrypted_data_bag_secret_vagrant",
+      "run_list": [
+        "jenkins-liatrio::default"
+      ]
+    }
+  ],
+  "builders": [
+    {
+      "type": "docker",
+      "image": "centos/systemd",
+      "export_path": "image.tar"
+    }
+  ]
+}
