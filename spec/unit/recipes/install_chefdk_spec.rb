@@ -11,9 +11,9 @@ describe 'jenkins-liatrio::install_chefdk' do
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
   before do
-    stub_command("rpm -qa chefdk | grep chefdk").and_return(false)
-    stub_command("chef gem list | grep knife-spork").and_return(false)
-    stub_command("chef gem list | grep slack-notifer").and_return(false)
+    stub_command('rpm -qa chefdk | grep chefdk').and_return(false)
+    stub_command('chef gem list | grep knife-spork').and_return(false)
+    stub_command('chef gem list | grep slack-notifer').and_return(false)
   end
 
   it 'Installs ChefDK version 0.16.28' do
@@ -33,5 +33,4 @@ describe 'jenkins-liatrio::install_chefdk' do
       command: 'chef gem install --no-user-install slack-notifier'
     )
   end
-
 end

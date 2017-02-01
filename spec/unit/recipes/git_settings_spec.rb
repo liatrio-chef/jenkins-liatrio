@@ -17,6 +17,4 @@ describe 'jenkins-liatrio::git_settings' do
       source: '.gitconfig.erb'
     )
   end
-
-
 end
