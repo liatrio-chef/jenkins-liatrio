@@ -76,3 +76,4 @@ Contributing
 License and Authors
 -------------------
 Authors: Drew Holt <drew@liatrio.com>
+Authors: Justin Bankes <justin@liatrio.com>
