@@ -1,7 +1,7 @@
 #
 # ChefSpec for jenkins-liatrio
-# Recipe: configure_mail
-# Author: Justin Bankes justin@liatrio.com
+# Recipe: git_settings
+# Author: Tyler Gering <tyler@liatrio.com>
 #
 
 # Currently this recipe doesn't have anything running in it.
