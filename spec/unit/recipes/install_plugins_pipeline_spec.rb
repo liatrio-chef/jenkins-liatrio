@@ -10,17 +10,17 @@ require 'spec_helper'
 describe 'jenkins-liatrio::install_plugins_pipeline' do
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
-   before do
-      stub_command('cd /var/lib/jenkins; unzip sonar-runner-dist-2.4.zip').and_return(true)
-      stub_command('/var/lib/jenkins/sonar-runner-2.4').and_return(false) #this might need to change
-   end
+  before do
+    stub_command('cd /var/lib/jenkins; unzip sonar-runner-dist-2.4.zip').and_return(true)
+    stub_command('/var/lib/jenkins/sonar-runner-2.4').and_return(false) # this might need to change
+  end
 
   it 'Creates Sonar-Runner Cookbook_file' do
     expect(chef_run).to create_cookbook_file('/var/lib/jenkins/sonar-runner-dist-2.4.zip').with(
-        source: 'sonar-runner-dist-2.4.zip',
-        owner: 'jenkins',
-        group: 'jenkins',
-        mode: '0644'
+      source: 'sonar-runner-dist-2.4.zip',
+      owner: 'jenkins',
+      group: 'jenkins',
+      mode: '0644'
     )
   end
 
@@ -54,5 +54,4 @@ describe 'jenkins-liatrio::install_plugins_pipeline' do
       group: 'jenkins'
     )
   end
-
 end
