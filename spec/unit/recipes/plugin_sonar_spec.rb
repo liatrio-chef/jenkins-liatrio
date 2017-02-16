@@ -26,10 +26,6 @@ describe 'jenkins-liatrio::plugin_sonar' do
     expect(chef_run).to run_execute('unzip_sonar-runner')
   end
 
-  # it 'Installs Plugin HygeiaPublisher' do
-  #   expect(chef_run).to run_execute('install-plugin-hygieia-publisher')
-  # end
-
   it 'Creates Sonar Publisher Template' do
     expect(chef_run).to create_template('/var/lib/jenkins/hudson.plugins.sonar.SonarPublisher.xml').with(
       source:   'hudson.plugins.sonar.SonarPublisher.xml.erb',
