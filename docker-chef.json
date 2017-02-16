@@ -1,0 +1,14 @@
+{
+  "java":{
+    "jdk_version":"8",
+    "install_flavor":"openjdk"
+  },
+  "jenkins":{
+    "master":{
+      "version":"2.28-1.1",
+      "jvm_options":"-Djenkins.install.runSetupWizard=false",
+      "host":"localhost",
+      "port":8080
+    }
+  }
+}

@@ -3,12 +3,12 @@ jenkins-liatrio CHANGELOG
 
 This file is used to list changes made in each version of the jenkins-liatrio cookbook.
 
-1.4.5 
+1.4.5
 -----
 - Ticket: LTA-148 by Justin Bankes
 - Added initscipts install in .kitchen.yml
 
-1.4.4 
+1.4.4
 -----
 - Ticket: LTA 135 by Justin Bankes
 - Added Spec tests for:
@@ -19,8 +19,8 @@ This file is used to list changes made in each version of the jenkins-liatrio co
 1.1.2 - 12.02.2016
 -----
 - Ticket: LTA-138 by Justin Bankes
-- Removed Swapfile recipe 
-- Implemented Swap file from swap 
+- Removed Swapfile recipe
+- Implemented Swap file from swap
 
 
 1.1.1 - 11.15.2016
