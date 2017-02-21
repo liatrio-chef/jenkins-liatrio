@@ -9,7 +9,11 @@ require 'spec_helper'
 describe 'jenkins-liatrio::swapfile' do
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
+
+
   it 'Creates Swapfile' do
+    allow(File).to receive(:exist?).and_call_original
+    allow(File).to receive(:exist?).with('/var/swapfile').and_return(false)
     expect(chef_run).to run_bash('create_swapfile')
   end
 
