@@ -3,6 +3,17 @@ jenkins-liatrio CHANGELOG
 
 This file is used to list changes made in each version of the jenkins-liatrio cookbook.
 
+1.5.1
+-----
+- Ticket: LTA-258 by Justin Bankes
+- Added Blue Ocean pipeline editor and dependencies to plugins. 
+
+1.5.0
+-----
+- Ticket: CHICO-302 by Justin Bankes
+- Added Blue Ocean and dependencies to plugins. 
+- Added Google-Login to plugins. 
+
 1.4.5 
 -----
 - Ticket: LTA-148 by Justin Bankes
