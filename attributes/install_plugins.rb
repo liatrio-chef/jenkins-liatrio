@@ -5,7 +5,6 @@
 # Author: Drew Holt <drew@liatrio.com>
 #
 
-
 default[:jenkins_liatrio][:install_plugins][:plugins_list] = %w(
   ace-editor=1.1
   ansicolor=0.4.3
