@@ -5,6 +5,7 @@
 # Author: Drew Holt <drew@liatrio.com>
 #
 
+
 default[:jenkins_liatrio][:install_plugins][:plugins_list] = %w(
   ace-editor=1.1
   ansicolor=0.4.3
@@ -109,6 +110,7 @@ default[:jenkins_liatrio][:install_plugins][:plugins_list] = %w(
   workflow-step-api=2.9
   workflow-support=2.13
 )
+
 default[:jenkins_liatrio][:install_plugins][:enablearchiva]	= false
 default[:jenkins_liatrio][:install_plugins][:enablesonar]	= false
 default[:jenkins_liatrio][:install_plugins][:enablearchiva]	= false
