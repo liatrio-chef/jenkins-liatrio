@@ -3,6 +3,14 @@ jenkins-liatrio CHANGELOG
 
 This file is used to list changes made in each version of the jenkins-liatrio cookbook.
 
+1.5.2
+-----
+- Ticket: LTA-259 by Justin Bankes
+- Updated the following Packages
+  - Pipeline: Declarative Agent API
+  - Pipeline: Model API
+  - Pipeline: Model Definition
+  - Pipeline: Stage Tags Metadata
 
 1.5.1
 -----
