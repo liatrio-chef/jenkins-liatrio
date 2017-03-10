@@ -1,7 +1,13 @@
 jenkins-liatrio CHANGELOG
 =========================
 
-This file is used to list changes made in each version of the jenkins-liatrio cookbook.
+Use this file to list changes made in each version of the jenkins-liatrio cookbook.
+
+1.5.3
+-----
+- Ticket: CHICO-330 by Justin Bankes
+- Updating plugins related to blue ocean.
+- Updated Vagrantbox jenkins version to 2.49 from 2.28
 
 1.5.2
 -----
@@ -15,21 +21,21 @@ This file is used to list changes made in each version of the jenkins-liatrio co
 1.5.1
 -----
 - Ticket: LTA-258 by Justin Bankes
-- Added Blue Ocean pipeline editor and dependencies to plugins. 
+- Added Blue Ocean pipeline editor and dependencies to plugins.
 
 
 1.5.0
 -----
 - Ticket: CHICO-302 by Justin Bankes
-- Added Blue Ocean and dependencies to plugins. 
-- Added Google-Login to plugins. 
+- Added Blue Ocean and dependencies to plugins.
+- Added Google-Login to plugins.
 
-1.4.5 
+1.4.5
 -----
 - Ticket: LTA-148 by Justin Bankes
 - Added initscipts install in .kitchen.yml
 
-1.4.4 
+1.4.4
 -----
 - Ticket: LTA 135 by Justin Bankes
 - Added Spec tests for:
@@ -40,8 +46,8 @@ This file is used to list changes made in each version of the jenkins-liatrio co
 1.1.2 - 12.02.2016
 -----
 - Ticket: LTA-138 by Justin Bankes
-- Removed Swapfile recipe 
-- Implemented Swap file from swap 
+- Removed Swapfile recipe
+- Implemented Swap file from swap
 
 
 1.1.1 - 11.15.2016
