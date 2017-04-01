@@ -3,6 +3,14 @@ jenkins-liatrio CHANGELOG
 
 Use this file to list changes made in each version of the jenkins-liatrio cookbook.
 
+
+1.5.4
+-----
+- Ticket: CHICO-330 by Justin Bankes
+- Updating plugins 
+- Updated Vagrantbox jenkins version to 2.52 from 2.49
+
+
 1.5.3
 -----
 - Ticket: CHICO-330 by Justin Bankes
