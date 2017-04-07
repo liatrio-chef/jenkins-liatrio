@@ -3,11 +3,17 @@ jenkins-liatrio CHANGELOG
 
 Use this file to list changes made in each version of the jenkins-liatrio cookbook.
 
+1.6.0
+-----
+- Ticket: LTA-268 by Justin Bankes
+- Added Docker installation via Docker Cookbook
+- Updated Blue Ocean to 1.0.0 version with all dependencies.
+- Updated Plugins as of 4.7.2017
 
 1.5.4
 -----
 - Ticket: CHICO-330 by Justin Bankes
-- Updating plugins 
+- Updating plugins
 - Updated Vagrantbox jenkins version to 2.52 from 2.49
 
 
