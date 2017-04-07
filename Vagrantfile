@@ -60,7 +60,7 @@ Vagrant.configure(2) do |config|
       },
       'jenkins' => {
         'master' => {
-          'version' => '2.52-1.1',
+          'version' => '2.53-1.1',
           'jvm_options' => '-Djenkins.install.runSetupWizard=false',
           'host' => 'localhost',
           'port' => 8080,
@@ -90,6 +90,7 @@ Vagrant.configure(2) do |config|
   config.vm.network 'forwarded_port', guest: 8080, host: 18080
 
   config.vm.provider :virtualbox do |v|
+    v.memory = 2048
     v.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
     v.customize ['modifyvm', :id, '--cableconnected1', 'on']
     v.customize ['modifyvm', :id, '--cableconnected2', 'on']

@@ -7,6 +7,7 @@ suites:
       - "recipe[jenkins-liatrio::default]"
       - "recipe[jenkins-liatrio::install_plugins]"
       - "recipe[jenkins-liatrio::install_nodejs]"
+      - "recipe[jenkins-liatrio::install_docker]"
       - "recipe[jenkins-liatrio::plugin_maven]"
       - "recipe[jenkins-liatrio::git_settings]"
       - "recipe[jenkins-liatrio::job_vagrantbox]"
